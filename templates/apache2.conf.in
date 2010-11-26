@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-    ServerAdmin admin@%{SERVER_NAME}
-    ServerName %{SERVER_NAME}
+    ServerAdmin admin@${apache_conf:domain}
+    ServerName ${apache_conf:domain}
     <Directory />
         Order Deny,Allow
         Deny from all
@@ -10,5 +10,5 @@
     WSGIDaemonProcess ${apache_conf:user} threads=${apache_conf:threads} processes=${apache_conf:processes} display-name=${apache_conf:display-name} maximum-requests=${apache_conf:maximum-requests} python-path=${apache_conf:python-path}
     WSGIPassAuthorization On
     WSGIApplicationGroup %{GLOBAL}
-    SetEnv HTTP_X_VHM_HOST %{SERVER_NAME}
+    SetEnv HTTP_X_VHM_HOST ${apache_conf:domain}
 </VirtualHost>

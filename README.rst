@@ -63,7 +63,7 @@ Configuring Apache and mod_wsgi
 Installing mod_wsgi
 -------------------
 
-Apache2 needs to be installed as well as the ``**libapache2-mod-wsgi**`` module. This is assuming you are using Ubuntu. Other Linux distros may name this module something different::
+Apache2 needs to be installed as well as the ``libapache2-mod-wsgi`` module. This is assuming you are using Ubuntu. Other Linux distros may name this module something different::
 
     $ apt-get install libapache2-mod-wsgi
     
@@ -84,7 +84,7 @@ You only need to do this if the package libapache2-mod-wsgi doesn't use Python 2
     $ make
     $ sudo make install
 
-Notice above that when we configure mod_wsgi, we are using the --with-python parameter to indicate we want to use Python 2.6.
+Notice above that when we configure mod_wsgi, we are using the ``--with-python`` parameter to indicate we want to use Python 2.6.
 
 Then you'll need to make a file ``/etc/apache2/mods-available/wsgi.load`` and put the following in it::
 
@@ -110,6 +110,13 @@ Configuring Zeo server and zope.conf
 
 By default, mod_wsgi will use a single process to run the application. Since this configuration is intended for production use, it may be desirable to have a higher number of processes available to serve the application. The ZODB that Zope uses comes with a server named ZEO (Zope Enterprise Objects) that allows us to add as many processes to our configuration as our system permits, providing unlimited horizontal scalability. Typically, the recommended number of processes is one for each core in the system's processors. Let's set up a ZEO server and configure the Zope process to connect to it.
 
+Setting the directory permissions
+---------------------------------
+
+The ``var`` directory needs to be owned by the same user that is running Apache. On Ubuntu this means the ``www-data`` user. So we need to change the ownership of this dir to this user::
+
+    $ chown -R www-data var
+    
 Start up the Zeo server 
 -----------------------
 
