@@ -1,0 +1,27 @@
+%define INSTANCE ${buildout:directory}
+instancehome $INSTANCE
+
+<zodb_db main>
+    # Main database
+    cache-size 10000
+# Blob-enabled ZEOStorage database
+    <zeoclient>
+      blob-dir $INSTANCE/var/blobstorage
+      shared-blob-dir on
+      server ${zeo:zeo-address}
+      storage 1
+      name zeostorage
+      var $INSTANCE/var
+      cache-size 128MB
+
+    </zeoclient>
+    mount-point /
+</zodb_db>
+
+<zodb_db temporary>
+    <temporarystorage>
+      name temporary storage for sessioning
+    </temporarystorage>
+    mount-point /temp_folder
+    container-class Products.TemporaryFolder.TemporaryContainer
+</zodb_db>
