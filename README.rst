@@ -18,12 +18,12 @@ Several key benefits of running Zope2 under WSGI are:
 4. You can run non-Zope applications (e.g.
 `Pyramid <http://docs.pylonshq.com/pyramid/dev/index.html>`_,
 `Pylons <http://docs.pylonshq.com/>`_, 
-`Roundup <http://roundup.sourceforge.net/>`_, 
-`Trac <http://trac.edgewall.org>`_, static file serving, etc) in the same process space as your Zope application(s) by changing your Paste configuration.
+`Roundup <https://roundup.sourceforge.net/>`_,
+`Trac <https://trac.edgewall.org>`_, static file serving, etc) in the same process space as your Zope application(s) by changing your Paste configuration.
 
 5. You can skin dissimilar applications using applications like 
 `Deliverance <http://deliveranceproject.org>`_, or 
-`dv.xdvserver <http://pypi.python.org/pypi/dv.xdvserver>`_ which are middleware tools that perform output transformation.
+`dv.xdvserver <https://pypi.python.org/pypi/dv.xdvserver>`_ which are middleware tools that perform output transformation.
 
 6. You can externalize some functionality (like authentication) using middleware.
 
